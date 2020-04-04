@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: rethinkdb-master
+  namespace: rethinkdb
+  labels:
+    app: rethinkdb-master
+spec:
+  ports:
+  - port: 28015
+    name: rdb-api
+  - port: 29015
+    name: rdb-cluster-api
+  selector:
+    app: rethinkdb-master

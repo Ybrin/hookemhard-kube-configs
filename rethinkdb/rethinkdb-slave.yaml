@@ -1,0 +1,32 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: rethinkdb-slave-deployment
+  namespace: rethinkdb
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: rethinkdb-slave
+    spec:
+      containers:
+      - name: rethinkdb-slave
+        image: rethinkdb:2.4
+        command: ["rethinkdb"]
+        args:
+        - --bind
+        - "all"
+        - --join
+        - "rethinkdb-master:29015"
+        - --canonical-address
+        - "$(MY_POD_IP):29015"
+        env:
+        - name: MY_POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        - name: MY_POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
