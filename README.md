@@ -12,6 +12,8 @@ Initial Password: `ykd3kJ7ABb29pluc`
 
 ### Staging
 
+Initial Password `elAcEq3eDDxmibyK`
+
 ## Kubernetes Setup
 
 ### helm
@@ -34,6 +36,9 @@ helm install ingress-nginx stable/nginx-ingress --set rbac.create=true --set con
 ### cert-manager
 
 ```bash
+kubectl apply \
+    -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.6/deploy/manifests/00-crds.yaml
+
 kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v0.14.1/cert-manager-legacy.crds.yaml
 
 kubectl create namespace cert-manager
@@ -91,6 +96,7 @@ Grafana:
 ```
 
 Production password: `d5TXPjkzcHgJPhzWNFTmXM1lFuQDbwoCdeefvwfX`
+Staging password: `AvK1jA7DhOmyUZdmXkRKLesXAGeSvNetmfacRzOB`
 Development password: `GjBcigDucksZOWo7lMSoS4Ag5LMMCb9qD5IsNS9g`
 
 ### RethinkDB
