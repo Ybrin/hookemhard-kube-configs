@@ -104,7 +104,7 @@ Development password: `GjBcigDucksZOWo7lMSoS4Ag5LMMCb9qD5IsNS9g`
 To access the dashboard, run the following command:
 
 ```bash
-kubectl port-forward rethinkdb-master-0 5000:8080
+kubectl -n rethinkdb port-forward rethinkdb-master-0 5000:8080
 ```
 
 and use localhost:5000 to access it.
